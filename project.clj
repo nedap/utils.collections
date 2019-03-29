@@ -1,4 +1,4 @@
-(defproject com.nedap.staffing-solutions/utils.collections "0.1.0"
+(defproject com.nedap.staffing-solutions/utils.collections "0.2.0"
   :description "Utilities for collection processing"
   :url "https://github.com/nedap/utils.collections"
   :license {:name "Eclipse Public License"

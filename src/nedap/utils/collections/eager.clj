@@ -6,9 +6,7 @@
    [clojure.spec.alpha :as spec]
    [nedap.utils.collections.transients :as collections.transients]
    [nedap.utils.spec.predicates :refer :all]
-   [nedap.utils.speced :as speced])
-  (:import
-   (clojure.lang Repeat)))
+   [nedap.utils.speced :as speced]))
 
 (spec/def ::counted (fn [x]
                       (try
@@ -44,6 +42,12 @@
         (nth index)
         (nth 2))))
 
+(def ^:dynamic *partitioning-pmap-runner*
+  "The `clojure.core/map`-like function that `partitioning-pmap` will use.
+
+  You may want to specify a different function for a finer-grained control of the underlying thread pool."
+  pmap)
+
 (speced/defn ^vector? partitioning-pmap
   "`clojure.core/pmap` replacement. Avoids creating more threads than necessary for CPU-bound tasks.
 
@@ -55,9 +59,9 @@
     (let [cpus (-> (Runtime/getRuntime) .availableProcessors)]
       (->> coll
            (divide-by cpus)
-           (pmap (fn [work]
-                   (->> work
-                        (mapv f)
-                        transient)))
+           (*partitioning-pmap-runner* (fn [work]
+                                         (->> work
+                                              (mapv f)
+                                              transient)))
            (reduce collections.transients/into!)
            (persistent!)))))
