@@ -5,7 +5,7 @@ Utilities for collection processing, organised by purpose.
 ## Installation
 
 ```clojure
-[com.nedap.staffing-solutions/utils.collections "0.2.0"]
+[com.nedap.staffing-solutions/utils.collections "0.3.0"]
 ```
 
 ## ns organisation

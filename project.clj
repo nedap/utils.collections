@@ -1,4 +1,4 @@
-(defproject com.nedap.staffing-solutions/utils.collections "0.2.0"
+(defproject com.nedap.staffing-solutions/utils.collections "0.3.0"
   :description "Utilities for collection processing"
   :url "https://github.com/nedap/utils.collections"
   :license {:name "Eclipse Public License"
@@ -12,4 +12,4 @@
                     {:username :env/artifactory_user
                      :password :env/artifactory_pass}}
   :dependencies [[org.clojure/clojure "1.10.0"]
-                 [com.nedap.staffing-solutions/utils.spec "0.6.0"]])
+                 [com.nedap.staffing-solutions/utils.spec "0.6.1"]])
