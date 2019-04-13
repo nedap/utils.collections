@@ -55,7 +55,7 @@
   [^ifn? f
    ^::counted coll]
   (if-not (seq coll)
-    coll
+    (vec coll)
     (let [cpus (-> (Runtime/getRuntime) .availableProcessors)]
       (->> coll
            (divide-by cpus)
