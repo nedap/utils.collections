@@ -12,7 +12,8 @@
 
 Refer to the tests for examples."
   [{:keys [f n]
-    :or   {f identity}
+    :or   {f identity
+           n (-> (Runtime/getRuntime) .availableProcessors)}
     :as   options}
    coll]
   {:pre [(check! (partial every? #{:f :n}) (keys options)
