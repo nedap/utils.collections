@@ -2,7 +2,7 @@
 
 Utilities for collection processing, organised by purpose (or collection type).
 
-Also, for certain error-prone `clojure.core` functions, drop-in replacements are offered, providing stronger specing (plus type hinting), addressing their error-prone parts.
+Also, for certain error-prone `clojure.core` functions, drop-in replacements are offered, providing stronger specing (plus type hinting), addressing their error-prone aspects.
 
 ## Installation
 

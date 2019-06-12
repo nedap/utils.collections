@@ -1,4 +1,5 @@
 (ns unit.nedap.utils.collections.seq
+  (:refer-clojure :exclude [flatten])
   (:require
    [clojure.test :refer :all]
    [nedap.utils.collections.seq :as sut]))
@@ -28,3 +29,28 @@
                   output (sut/distribute-evenly-by {:n n} input)]]
       (is (= (->> output sort)
              input)))))
+
+(deftest flatten
+  (testing "Basic behavior"
+    (are [input expected] (testing input
+                            (= expected
+                               (sut/flatten input)))
+      nil                               '()
+      []                                '()
+      [1 [[[[[[[[[[[[[[2]]]]]]]]]]]]]]] '(1 2)))
+
+  (testing "Non-sequential top-level inputs are forbidden"
+    (are [input] (thrown-with-msg? clojure.lang.ExceptionInfo #"Validation failed" (with-out-str
+                                                                                     (sut/flatten input)))
+      #{}
+      {}))
+
+  (testing "Non-sequential nested inputs are allowed"
+    (are [input expected] (= expected
+                             (sut/flatten input))
+      [#{}]              '(#{})
+      [#{1 2 3}]         '(#{1 2 3})
+      [[[[[#{1 2 3}]]]]] '(#{1 2 3})
+      [{}]               '({})
+      [{1 2}]            '({1 2})
+      [[[[[{1 2}]]]]]    '({1 2}))))
