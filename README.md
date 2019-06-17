@@ -1,6 +1,8 @@
 # nedap.utils.collections
 
-Utilities for collection processing, organised by purpose.
+Utilities for collection processing, organised by purpose (or collection type).
+
+Also, for certain error-prone `clojure.core` functions, drop-in replacements are offered, providing stronger specing (plus type hinting), addressing their error-prone aspects.
 
 ## Installation
 
@@ -18,7 +20,7 @@ Please browse the public namespaces, which should be concise, documented, speced
 
 ## Development
 
-I'd suggest that every function should be heavily speced. That way, consumer projects get a free layer of checking.
+I'd suggest that every function should be heavily speced. That way, consumer projects get a free layer of checking, and type hinting.
 
 `clojure.core` has a different philosophy (it can return meaningful results for nil arguments, and dubious results for arguments of unexpected type),
 which is a good idea for a general-purpose language aiming a variety of use cases and styles.

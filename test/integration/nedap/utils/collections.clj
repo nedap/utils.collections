@@ -1,4 +1,5 @@
 (ns integration.nedap.utils.collections
+  (:refer-clojure :exclude [flatten])
   (:require
    [clojure.test :refer :all]
    [nedap.utils.collections.eager :refer :all]
@@ -9,9 +10,9 @@
                   (->> i
                        (distribute-evenly-by {:n n})
                        (divide-by n)))
-    [] 4 []
+    []                                4 []
     [1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 4] 4 '[(1 2 3 4) (1 2 3 4) (1 2 3 4) (1 2 3 4)])
-  
+
   (doseq [_ (range 100)]
     (= '[(1 2 3 4) (1 2 3 4) (1 2 3 4) (1 2 3 4)]
        (->> [1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 4]
