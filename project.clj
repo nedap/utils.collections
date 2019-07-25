@@ -50,7 +50,7 @@
                                   [com.stuartsierra/component "0.4.0"]
                                   [com.taoensso/timbre "4.10.0"]
                                   [criterium "0.4.4"]
-                                  [formatting-stack "0.19.3"
+                                  [formatting-stack "1.0.0-alpha1"
                                    :exclusions [rewrite-clj]]
                                   [lambdaisland/deep-diff "0.0-29"]
                                   [medley "1.1.0"]

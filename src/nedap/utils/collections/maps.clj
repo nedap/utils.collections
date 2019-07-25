@@ -1,8 +1,8 @@
 (ns nedap.utils.collections.maps
   (:require
    [clojure.set :as set]
-   [nedap.utils.spec.api :refer [check!]]
-   [nedap.speced.def :as speced]))
+   [nedap.speced.def :as speced]
+   [nedap.utils.spec.api :refer [check!]]))
 
 (speced/defn ^boolean? unambigiously-invertable?
   [^map? m]
