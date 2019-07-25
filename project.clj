@@ -1,7 +1,7 @@
 ;; Please don't bump the library version by hand - use ci.release-workflow instead.
 (defproject com.nedap.staffing-solutions/utils.collections "1.0.0"
   ;; Please keep the dependencies sorted a-z.
-  :dependencies [[com.nedap.staffing-solutions/utils.spec "0.9.0"]
+  :dependencies [[com.nedap.staffing-solutions/speced.def "1.0.0-alpha3"]
                  [org.clojure/clojure "1.10.1"]]
 
   :description "Utilities for collection processing"
@@ -66,4 +66,4 @@
              :ci  {:pedantic?    :abort
                    :jvm-opts     ["-Dclojure.main.report=stderr"]
                    :global-vars  {*assert* true} ;; `ci.release-workflow` relies on runtime assertions
-                   :dependencies [[com.nedap.staffing-solutions/ci.release-workflow "1.1.0"]]}})
+                   :dependencies [[com.nedap.staffing-solutions/ci.release-workflow "1.3.0-alpha1"]]}})

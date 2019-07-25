@@ -1,7 +1,7 @@
 (ns nedap.utils.collections.transients
   "Functions concerned with https://clojure.org/reference/transients"
   (:require
-   [nedap.utils.speced :as speced])
+   [nedap.speced.def :as speced])
   (:import
    (clojure.lang ITransientCollection)))
 

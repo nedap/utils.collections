@@ -5,8 +5,8 @@
   (:require
    [clojure.spec.alpha :as spec]
    [nedap.utils.collections.transients :as collections.transients]
-   [nedap.utils.spec.predicates :refer :all]
-   [nedap.utils.speced :as speced]))
+   [nedap.speced.def.predicates :refer :all]
+   [nedap.speced.def :as speced]))
 
 (spec/def ::counted (fn [x]
                       (try

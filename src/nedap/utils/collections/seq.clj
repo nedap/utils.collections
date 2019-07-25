@@ -4,8 +4,8 @@
   All functions contained here should be lazy, else they should live in the `eager` ns."
   (:refer-clojure :exclude [flatten])
   (:require
-   [nedap.utils.spec.predicates :refer :all]
-   [nedap.utils.speced :as speced]))
+   [nedap.speced.def.predicates :refer :all]
+   [nedap.speced.def :as speced]))
 
 (speced/defn ^sequential? distribute-evenly-by
   "Sorts `coll` by `f` in such a way that if partitioned by `n`, each partition will have items of similar cost.

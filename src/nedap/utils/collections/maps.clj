@@ -2,7 +2,7 @@
   (:require
    [clojure.set :as set]
    [nedap.utils.spec.api :refer [check!]]
-   [nedap.utils.speced :as speced]))
+   [nedap.speced.def :as speced]))
 
 (speced/defn ^boolean? unambigiously-invertable?
   [^map? m]
