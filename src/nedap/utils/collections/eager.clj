@@ -4,9 +4,9 @@
   Accordingly, avoid processing inputs larger than memory."
   (:require
    [clojure.spec.alpha :as spec]
-   [nedap.utils.collections.transients :as collections.transients]
+   [nedap.speced.def :as speced]
    [nedap.utils.spec.predicates :refer :all]
-   [nedap.utils.speced :as speced]))
+   [nedap.utils.collections.transients :as collections.transients]))
 
 (spec/def ::counted (fn [x]
                       (try

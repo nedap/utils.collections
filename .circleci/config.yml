@@ -40,7 +40,7 @@ jobs:
 
     - run:
         name: 'Run JVM tests, reporting coverage'
-        command: lein trampoline cloverage --lcov --junit -o coverage/
+        command: lein with-profile -dev trampoline cloverage --lcov --junit -o coverage/
 
     - store_test_results:
         path: ~/repo/coverage
