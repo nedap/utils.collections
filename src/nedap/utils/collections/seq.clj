@@ -5,7 +5,7 @@
   (:refer-clojure :exclude [flatten])
   (:require
    [nedap.speced.def :as speced]
-   [nedap.speced.def.predicates :refer :all]))
+   [nedap.utils.spec.predicates :refer :all]))
 
 (speced/defn ^sequential? distribute-evenly-by
   "Sorts `coll` by `f` in such a way that if partitioned by `n`, each partition will have items of similar cost.
