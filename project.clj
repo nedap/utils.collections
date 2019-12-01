@@ -50,23 +50,21 @@
                                    [com.stuartsierra/component "0.4.0"]
                                    [com.taoensso/timbre "4.10.0"]
                                    [criterium "0.4.4"]
-                                   [formatting-stack "1.0.0-alpha10"
-                                    :exclusions [rewrite-clj]]
+                                   [formatting-stack "1.0.0"]
                                    [lambdaisland/deep-diff "0.0-29"]
-                                   [medley "1.1.0"]
-                                   [org.clojure/core.async "0.4.490"]
+                                   [medley "1.2.0"]
+                                   [org.clojure/core.async "0.5.527"]
                                    [org.clojure/math.combinatorics "0.1.1"]
                                    [org.clojure/test.check "0.10.0-alpha3"]
-                                   [org.clojure/tools.namespace "0.3.0-alpha4"]
-                                   [org.clojure/tools.reader "1.1.1" #_"transitive"]
-                                   [rewrite-clj "0.6.1" #_"transitive"]]
+                                   [org.clojure/tools.namespace "0.3.0-alpha4"]]
                     :plugins      [[lein-cloverage "1.1.1"]]
                     :source-paths ["dev"]
                     :repl-options {:init-ns dev}}
 
-             :test {:dependencies [[com.nedap.staffing-solutions/utils.test "1.6.1"]]}
+             :test {:dependencies [[com.nedap.staffing-solutions/utils.test "1.6.1"]]
+                    :jvm-opts     ["-Dclojure.core.async.go-checking=true"]}
 
              :ci   {:pedantic?    :abort
                     :jvm-opts     ["-Dclojure.main.report=stderr"]
                     :global-vars  {*assert* true} ;; `ci.release-workflow` relies on runtime assertions
-                    :dependencies [[com.nedap.staffing-solutions/ci.release-workflow "1.5.0"]]}})
+                    :dependencies [[com.nedap.staffing-solutions/ci.release-workflow "1.6.0"]]}})
