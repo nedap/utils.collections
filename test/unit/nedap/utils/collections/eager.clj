@@ -1,7 +1,9 @@
 (ns unit.nedap.utils.collections.eager
   (:require
    [clojure.test :refer :all]
-   [nedap.utils.collections.eager :as sut]))
+   [nedap.utils.collections.eager :as sut])
+  (:import
+   (clojure.lang ExceptionInfo)))
 
 (deftest divide-by
   (testing "Basic behavior"
@@ -52,3 +54,18 @@
                                [1 1])
         (is (= (-> @proof count)
                (-> @proof distinct count)))))))
+
+(deftest first!
+  (are [input] (thrown-with-msg? ExceptionInfo
+                                 #"Non unique collection"
+                                 (sut/first! input))
+    [1 2 3]
+    #{1 2 3})
+
+  (are [input expected] (= expected
+                           (sut/first! input))
+    [1]   1
+    [[1]] [1]
+
+    []    nil
+    [nil] nil))
