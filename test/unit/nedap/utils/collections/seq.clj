@@ -41,11 +41,12 @@
       []                                '()
       [1 [[[[[[[[[[[[[[2]]]]]]]]]]]]]]] '(1 2)))
 
-  (testing "Non-sequential top-level inputs are forbidden"
-    (are [input] (thrown-with-msg? ExceptionInfo #"Validation failed" (with-out-str
-                                                                        (sut/flatten input)))
-      #{}
-      {}))
+  (when *assert*
+    (testing "Non-sequential top-level inputs are forbidden"
+      (are [input] (thrown-with-msg? ExceptionInfo #"Validation failed" (with-out-str
+                                                                          (sut/flatten input)))
+        #{}
+        {})))
 
   (testing "Non-sequential nested inputs are allowed"
     (are [input expected] (= expected

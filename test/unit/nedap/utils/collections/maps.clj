@@ -21,5 +21,6 @@
       {1 1} {1 1}
       {1 2} {2 1}))
 
-  (testing "Conflicting would-be keys are forbidden"
-    (is (spec-assertion-thrown? 'unambigiously-invertable? (sut/invert {:a 1 :b 1})))))
+  (when *assert*
+    (testing "Conflicting would-be keys are forbidden"
+      (is (spec-assertion-thrown? 'unambigiously-invertable? (sut/invert {:a 1 :b 1}))))))
