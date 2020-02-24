@@ -53,7 +53,7 @@
                                        [com.stuartsierra/component "0.4.0"]
                                        [com.taoensso/timbre "4.10.0"]
                                        [criterium "0.4.5"]
-                                       [formatting-stack "3.2.0"]
+                                       [formatting-stack "4.0.0"]
                                        [lambdaisland/deep-diff "0.0-29"]
                                        [medley "1.2.0"]
                                        [org.clojure/core.async "1.0.567"]
