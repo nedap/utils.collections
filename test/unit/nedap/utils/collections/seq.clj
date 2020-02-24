@@ -2,7 +2,9 @@
   (:refer-clojure :exclude [flatten])
   (:require
    [clojure.test :refer :all]
-   [nedap.utils.collections.seq :as sut]))
+   [nedap.utils.collections.seq :as sut])
+  (:import
+   (clojure.lang ExceptionInfo)))
 
 (deftest distribute-evenly-by
   (testing "Basic"
@@ -40,8 +42,8 @@
       [1 [[[[[[[[[[[[[[2]]]]]]]]]]]]]]] '(1 2)))
 
   (testing "Non-sequential top-level inputs are forbidden"
-    (are [input] (thrown-with-msg? clojure.lang.ExceptionInfo #"Validation failed" (with-out-str
-                                                                                     (sut/flatten input)))
+    (are [input] (thrown-with-msg? ExceptionInfo #"Validation failed" (with-out-str
+                                                                        (sut/flatten input)))
       #{}
       {}))
 

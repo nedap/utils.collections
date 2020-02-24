@@ -1,4 +1,6 @@
-# nedap.utils.collections
+# utils.collections
+
+<!-- (In short: What does the project do?) -->
 
 Utilities for collection processing, organised by purpose (or collection type).
 
@@ -16,7 +18,7 @@ Everything not under an `impl` folder or suffix is a public API, and should be c
 
 ## Documentation
 
-Please browse the public namespaces, which should be concise, documented, speced and tested.
+Please browse the public namespaces, which are documented, speced and tested.
 
 ## Development
 
@@ -25,10 +27,12 @@ I'd suggest that every function should be heavily speced. That way, consumer pro
 `clojure.core` has a different philosophy (it can return meaningful results for nil arguments, and dubious results for arguments of unexpected type),
 which is a good idea for a general-purpose language aiming a variety of use cases and styles.
 
-In practice, for a lot of use-cases one certainly wants things to be well-formed and to fail fast.
+The default namespace is `dev`. Under it, `(refresh)` is available, which should give you a basic "Reloaded workflow".
+
+> It is recommended that you use `(clojure.tools.namespace.repl/refresh :after 'formatting-stack.core/format!)`.
 
 ## License
 
 Copyright © Nedap
 
-This program and the accompanying materials are made available under the terms of the Eclipse Public License 2.0 which is available at http://www.eclipse.org/legal/epl-2.0.
+This program and the accompanying materials are made available under the terms of the [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0).
