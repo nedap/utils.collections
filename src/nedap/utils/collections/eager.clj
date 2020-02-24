@@ -5,8 +5,8 @@
   (:require
    [clojure.spec.alpha :as spec]
    [nedap.speced.def :as speced]
-   [nedap.utils.spec.predicates :refer :all]
-   [nedap.utils.collections.transients :as collections.transients]))
+   [nedap.utils.collections.transients :as collections.transients]
+   [nedap.utils.spec.predicates :refer :all]))
 
 (spec/def ::counted (fn [x]
                       (try
@@ -65,3 +65,10 @@
                                               transient)))
            (reduce collections.transients/into!)
            (persistent!)))))
+
+(speced/defn first!
+  "`clojure.core/first` which throws when a collection contains more than 1 item"
+  [^coll? coll]
+  (if (<= (count coll) 1)
+    (first coll)
+    (throw (ex-info "Non unique collection" {:collection coll}))))
