@@ -69,6 +69,6 @@
 (speced/defn first!
   "`clojure.core/first` which throws when a collection contains more than 1 item"
   [^coll? coll]
-  (if (#{0 1} (count coll))
+  (if (<= (count coll) 1)
     (first coll)
     (throw (ex-info "Non unique collection" {:collection coll}))))
