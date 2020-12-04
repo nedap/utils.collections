@@ -1,9 +1,11 @@
 (ns unit.nedap.utils.collections.eager
   (:require
    [clojure.test :refer :all]
-   [nedap.utils.collections.eager :as sut])
+   [nedap.utils.collections.eager :as sut]
+   [nedap.utils.spec.api])
   (:import
-   (clojure.lang ExceptionInfo)))
+   (clojure.lang ExceptionInfo)
+   (java.util HashSet)))
 
 (deftest divide-by
   (testing "Basic behavior"
@@ -60,12 +62,25 @@
                                  #"Non unique collection"
                                  (sut/first! input))
     [1 2 3]
-    #{1 2 3})
+    #{1 2 3}
+    (HashSet. [1 2 3])
+    "abc")
 
   (are [input expected] (= expected
                            (sut/first! input))
-    [1]   1
-    [[1]] [1]
+    [1]            1
+    [[1]]          [1]
 
-    []    nil
-    [nil] nil))
+    []             nil
+    [nil]          nil
+
+    (HashSet.)     nil
+    (HashSet. [1]) 1
+
+    ""             nil
+    "a"            \a)
+
+  (when *assert*
+    (are [input] (spec-assertion-thrown? seqable? (sut/first! input))
+      :a
+      1)))
