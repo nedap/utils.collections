@@ -9,7 +9,7 @@ Also, for certain error-prone `clojure.core` functions, drop-in replacements are
 ## Installation
 
 ```clojure
-[com.nedap.staffing-solutions/utils.collections "2.1.0"]
+[com.nedap.staffing-solutions/utils.collections "2.2.0"]
 ```
 
 ## ns organisation
