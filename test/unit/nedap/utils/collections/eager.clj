@@ -84,3 +84,33 @@
     (are [input] (spec-assertion-thrown? seqable? (sut/first! input))
       :a
       1)))
+
+(deftest ffirst!
+  (are [input] (thrown-with-msg? ExceptionInfo
+                                 #"Non unique collection"
+                                 (sut/ffirst! input))
+    [[1 2 3]]
+    #{1 2 3}
+    (HashSet. [1 2 3])
+    "abc")
+
+  (are [input expected] (= expected
+                           (sut/ffirst! input))
+    [[1]]            1
+    [[[1]]]          [1]
+
+    []               nil
+    [nil]            nil
+
+    (HashSet.)       nil
+    (HashSet. [[1]]) 1
+
+    '("")            nil
+    '("a")           \a)
+
+  (when *assert*
+    (are [input] (spec-assertion-thrown? seqable? (sut/ffirst! input))
+      "a"
+      :a
+      1
+      [1])))
