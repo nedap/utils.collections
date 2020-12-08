@@ -72,3 +72,8 @@
   (if (<= (count coll) 1)
     (first coll)
     (throw (ex-info "Non unique collection" {:collection coll}))))
+
+(speced/defn ffirst!
+  "`clojure.core/ffirst` which throws when a collection contains more than 1 item"
+  [^seqable? coll]
+  (-> coll first! first!))
