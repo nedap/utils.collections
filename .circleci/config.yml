@@ -130,6 +130,7 @@ workflows:
           <<: *test_code_filters
       - deploy:
           context:
+            - Clojars
             - Github
             - GPG
           requires:
